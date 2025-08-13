@@ -14,26 +14,29 @@
         // 사용자에게 두번째 숫자를 입력받음
 
         let num1 = prompt("첫번째 숫자를 입력하세요.");
-        let operator = confirm("산술 연산자를 입력하세요.");
-        let num2 = confirm("두번째 숫자를 입력하세요.");
+        let operator = prompt("산술 연산자를 입력하세요.");
+        let num2 = prompt("두번째 숫자를 입력하세요.");
+        let result;
 
         switch(operator){
-            case "+" :;
+            case "+" : result = num1 + num2;
             break;
-            case "-" :;
+            case "-" : result = num1 - num2;
             break;
-            case "*" :;
+            case "*" : result = num1 * num2;
             break;
-            case "/" :;
+            case "/" : result = num1 / num2;
             break;
-            case "%" :;
+            case "%" : result = num1 % num2;
             break;
 
             default : alert("없는 연산자입니다.");
         }
 
-        if(num2 == 0){
-            document.write("0으로 나눌 수 없습니다.")
+        if(operator == "/" && num2 == 0){
+            document.write("0으로 나눌 수 없습니다.");
+        }else{
+            document.write(result);
         }
     </script>
 </body>
