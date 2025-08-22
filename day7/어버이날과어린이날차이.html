@@ -7,28 +7,15 @@
 </head>
 <body>
     <script>
-        // 현재 연도 추출
-        let today = new Date(nowYear,4,5);
-        // let nowYear = today.getFullYear();
+        let childrensDay = new Date("2025-05-05");
+        let parentsDay = new Date("2025-05-08");
+        // 알아서 밀리초단위로 저장됨
 
-        // 올해의 어버이날 날짜 객체
-        let theDate = new Date(nowYear,4,8);
+        let minusDay = parentsDay - childrensDay;
+        console.log(minusDay);
 
-        // 연말과 현재의 시간 차이 계산
-        let dDay = theDate.getTime() - today.getTime();
-        
-        console.log(dDay);
-        console.log(theDate.getTime());
-        // 1970-01-01 ~ 2025-12-31 : 1767106800000
-        console.log(today.getTime());
-        // 1970-01-01 ~ 2025-08-20 : 1755660642820
-        // 11446350904
-
-        let result = Math.ceil(dDay/(1000 * 60 * 60 * 24));
-        // 11446350904(말일에서 현재일 뺀 밀리초) / 86400000(1일)
-        // ceil : 반올림
-
-        document.write(`어버이날과 어린이날 차이 : ${result}일 입니다.`);
+        let result = minusDay / (1000 * 60 * 60 * 24);
+        console.log(`어린이날과 어버이날은 ${result}일 차이가 납니다.`);
     </script>
 </body>
 </html>
