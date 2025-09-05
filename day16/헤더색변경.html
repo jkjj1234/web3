@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>헤더스크롤기초</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            background-color: rgb(255, 91, 214);
+            color: #fff;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .header > ul {
+            display: flex;
+            list-style: none;
+        }
+
+        li {
+            margin: 0 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #fff;
+            border: none;
+            /* outline: none; -> input클릭해도 보더가 두꺼워지지 않는다.*/
+            padding: 10px 16px;
+            border-radius: 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        h1 {
+            margin: 0 32px;
+        }
+
+        .header_active {
+            background-color: rgb(0, 89, 255);
+        }
+
+        .scroll_color_change {
+            color: rgb(136, 191, 255);
+        }
+
+        button.header_button_active {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="header">
+        <h1 class="color_change">LOGO</h1>
+        <ul id="menu">
+            <li class="color_change">메뉴1</li>
+            <li class="color_change">메뉴2</li>
+            <li class="color_change">메뉴3</li>
+            <li class="color_change">메뉴4</li>
+        </ul>
+        <div class="login_btn">
+            <button>로그인</button>
+            <button>회원가입</button>
+        </div>
+    </header>
+
+
+
+
+    <script>
+        const header = document.getElementById("header");
+        let headerHeight = header.getBoundingClientRect().height;
+        const headerColorChange = document.querySelectorAll(".color_change");
+        console.log(headerColorChange);
+
+        const buttons = document.querySelectorAll(".login_btn button");
+        console.log(buttons);
+
+        window.addEventListener("scroll",()=>{
+            let scrollHeight = window.scrollY
+            // 얼만큼 스크롤 했는지
+            console.log(scrollHeight);
+
+            if(scrollHeight > headerHeight){
+                header.classList.add("header_active");
+                headerColorChange.forEach((element)=>{
+                    element.classList.add("scroll_color_change")
+                })
+                buttons.forEach((btn)=>{
+                    btn.classList.add("header_button_active")
+                })
+            }else{
+                header.classList.remove("header_active");
+                headerColorChange.forEach((element)=>{
+                    element.classList.remove("scroll_color_change")
+                })
+                buttons.forEach((btn)=>{
+                    btn.classList.remove("header_button_active")
+                })
+            }
+        })
+    </script>
+</body>
+</html>
